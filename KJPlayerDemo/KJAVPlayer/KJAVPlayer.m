@@ -193,6 +193,16 @@ static CGSize tempSize;
     [self kj_destroyPlayer];
     self.state = KJPlayerStateStopped;
 }
+/* 判断是否为本地缓存视频，如果是则修改为指定链接地址 */
+- (void)kj_judgeHaveCacheWithVideoURL:(NSURL * _Nonnull __strong * _Nonnull)videoURL{
+    self.locality = NO;
+    KJCacheManager.kJudgeHaveCacheURL(^(BOOL locality) {
+        self.locality = locality;
+        if (locality) {
+            self.playError = [DBPlayerDataInfo kj_errorSummarizing:KJPlayerCustomCodeCachedComplete];
+        }
+    }, videoURL);
+}
 /* 圆圈加载动画 */
 - (void)kj_startAnimation{
     [super kj_startAnimation];

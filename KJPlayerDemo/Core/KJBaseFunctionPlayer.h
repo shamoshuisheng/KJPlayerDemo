@@ -58,6 +58,8 @@ NS_ASSUME_NONNULL_BEGIN
 /* ************************* 分割线，下面属性需在videoURL之后获取 *****************************/
 /* 播放失败 */
 @property (nonatomic,strong) NSError *playError;
+/* 本地资源 */
+@property (nonatomic,assign,readonly) BOOL locality;
 /* 是否正在播放 */
 @property (nonatomic,assign,readonly) BOOL isPlaying;
 /* 是否为用户暂停 */
@@ -80,6 +82,8 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)kj_pause;
 /* 停止 */
 - (void)kj_stop;
+/* 判断是否为本地缓存视频，如果是则修改为指定链接地址 */
+- (void)kj_judgeHaveCacheWithVideoURL:(NSURL * _Nonnull __strong * _Nonnull)videoURL;
 
 @end
 
@@ -103,6 +107,7 @@ NS_ASSUME_NONNULL_BEGIN
 @synthesize openAdvanceCache = _openAdvanceCache;\
 @synthesize recordLastTime = _recordLastTime;\
 @synthesize isPlaying = _isPlaying;\
+@synthesize locality = _locality;\
 @synthesize userPause = _userPause;\
 @synthesize kVideoTotalTime = _kVideoTotalTime;\
 @synthesize kVideoTryLookTime = _kVideoTryLookTime;\

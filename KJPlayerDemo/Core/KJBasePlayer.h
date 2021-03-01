@@ -50,6 +50,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic,assign) BOOL userPause;\
 @property (nonatomic,assign) BOOL tryLooked;\
 @property (nonatomic,assign) BOOL recordLastTime;\
+@property (nonatomic,assign) BOOL locality;\
 @property (nonatomic,strong) NSURL *originalURL;\
 @property (nonatomic,retain) dispatch_group_t group;\
 
